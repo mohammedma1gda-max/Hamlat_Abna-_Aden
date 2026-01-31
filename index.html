@@ -3,130 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حملة أبناء عدن - ولو بشق تمرة</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
-    --pal-red: #E4312b;
-    --pal-black: #000000;
-    --pal-white: #FFFFFF;
-    --pal-green: #149954;
-    --pal-light-green: #42b983;
-    --pal-light-gray: #f5f5f5;
-    --pal-dark-gray: #333;
-    --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    --border-radius: 8px;
+<title>حملة أبناء عدن | ولو بشق تمرة</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#149954',
+        danger: '#E4312b',
+        dark: '#111827'
+      }
+    }
+  }
 }
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { background-color:#f9f9f9; color:var(--pal-dark-gray); line-height:1.6; }
-.container { width:100%; max-width:1200px; margin:0 auto; padding:0 15px; }
-
-/* الهيدر */
-header { background: linear-gradient(to right, var(--pal-black), var(--pal-red), var(--pal-green)); color:white; padding:25px 0; position:sticky; top:0; z-index:1000; box-shadow:var(--box-shadow); }
-.header-content { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-.logo { display:flex; align-items:center; gap:15px; }
-.flag { width:50px; height:30px; background: linear-gradient(to bottom, var(--pal-black) 33.3%, var(--pal-white) 33.3%, var(--pal-white) 66.6%, var(--pal-green) 66.6%); position:relative; }
-.flag::before { content:""; position:absolute; left:0; top:0; width:0; height:0; border-style:solid; border-width:15px 0 15px 18px; border-color:transparent transparent transparent var(--pal-red); }
-.logo-text h1 { font-size:2rem; margin-bottom:5px; }
-.logo-text p { font-size:1.1rem; opacity:0.9; }
-.donate-btn { background-color: var(--pal-green); color:white; border:none; padding:12px 25px; border-radius:30px; font-weight:bold; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; gap:10px; }
-.donate-btn:hover { background-color: var(--pal-light-green); transform:translateY(-2px); }
-
-/* الحسابات البنكية */
-.accounts-section { padding:50px 0; }
-.section-title { text-align:center; margin-bottom:30px; color:var(--pal-red); position:relative; padding-bottom:15px; }
-.section-title::after { content:""; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:80px; height:3px; background: linear-gradient(to right, var(--pal-black), var(--pal-red), var(--pal-green)); }
-.bank-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:20px; margin-bottom:40px; }
-.bank-card { background-color:white; border-radius:var(--border-radius); padding:20px; box-shadow:var(--box-shadow); transition:transform 0.3s; }
-.bank-card:hover { transform:translateY(-5px); }
-.bank-name { color:var(--pal-red); margin-bottom:15px; padding-bottom:10px; border-bottom:1px solid #eee; display:flex; align-items:center; gap:10px; }
-.account-details { margin-top:15px; }
-.account-item { margin-bottom:10px; padding:10px; background-color:var(--pal-light-gray); border-radius:5px; display:flex; justify-content:space-between; align-items:center; }
-.copy-btn { background-color:var(--pal-green); color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-size:0.8rem; transition:background-color 0.3s; position:relative; }
-.copy-btn:hover { background-color:var(--pal-light-green); }
-.copy-btn.copied { background-color:var(--pal-red); }
-
-/* العبارات التشجيعية */
-.phrases-section { background:linear-gradient(45deg, var(--pal-red), var(--pal-green)); padding:50px 0; color:white; text-align:center; }
-.phrases-container { max-width:800px; margin:0 auto; }
-.phrase { font-size:1.2rem; margin-bottom:20px; padding:15px; background-color:rgba(255,255,255,0.1); border-radius:var(--border-radius); backdrop-filter:blur(5px); }
-
-/* التوثيقات */
-.proof-section { padding:40px 0; text-align:center; }
-.telegram-btn { display:inline-flex; align-items:center; gap:10px; background-color:#0088cc; color:white; text-decoration:none; padding:12px 25px; border-radius:30px; font-weight:bold; margin-top:20px; transition:all 0.3s; }
-.telegram-btn:hover { background-color:#006da3; transform:translateY(-2px); }
-
-/* العداد */
-.stats-section { background-color:var(--pal-light-gray); padding:40px 0; text-align:center; }
-.stats-box { background:linear-gradient(to right, var(--pal-black), var(--pal-red)); color:white; padding:30px; border-radius:var(--border-radius); display:inline-block; box-shadow:var(--box-shadow); }
-.stats-number { font-size:3rem; font-weight:bold; margin-bottom:10px; }
-.stats-text { font-size:1.2rem; }
-
-/* التواصل */
-.contact-section { padding:40px 0; }
-.contact-info { background-color:white; padding:30px; border-radius:var(--border-radius); box-shadow:var(--box-shadow); margin-bottom:30px; }
-.contact-channels { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
-.contact-channel { display:flex; flex-direction:column; align-items:center; padding:20px; background-color:var(--pal-light-gray); border-radius:var(--border-radius); transition:all 0.3s; }
-.contact-channel:hover { background-color:var(--pal-green); color:white; }
-.contact-icon { font-size:2rem; margin-bottom:15px; }
-.contact-numbers p { margin:2px 0; }
-
-/* الفوتر */
-footer { background: linear-gradient(to right, var(--pal-black), var(--pal-red)); color:white; padding:30px 0; text-align:center; }
-.footer-content { display:flex; flex-direction:column; gap:10px; }
-
-/* رسالة التأكيد */
-.copy-notification {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--pal-green);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 4px;
-    box-shadow: var(--box-shadow);
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.copy-notification.show {
-    opacity: 1;
-}
-
-/* متجاوب */
-@media(max-width:768px){
-.header-content{flex-direction:column;gap:15px;}
-.bank-cards{grid-template-columns:1fr;}
-.contact-channels{grid-template-columns:1fr;}
-.copy-notification {
-    right: 10px;
-    left: 10px;
-    text-align: center;
-}
-}
-</style>
+</script>
 </head>
-<body>
 
-<header>
-<div class="container">
-<div class="header-content">
-<div class="logo">
-<div class="flag"></div>
-<div class="logo-text">
-<h1>حملة أبناء عدن</h1>
-<p>ولو بشق تمرة... لدعم إخواننا المحتاجين في غزة</p>
-</div>
-</div>
-<button class="donate-btn">تبرع الآن <i class="fas fa-arrow-left"></i></button>
-</div>
-</div>
-</header>
+<body class="bg-gray-100 text-gray-800 leading-relaxed">
 
-<section class="accounts-section">
-<div class="container">
-<h2 class="section-title">الحسابات البنكية</h2>
+<!-- HERO -->
+<section class="bg-gradient-to-l from-black via-danger to-primary text-white">
+  <div class="max-w-6xl mx-auto px-6 py-24 text-center">
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-6">
+      حملة أبناء عدن
+    </h1>
+    <p class="text-xl mb-10 opacity-90">
+      ولو بشق تمرة… يدًا بيد لدعم أهلنا المحتاجين
+    </p>
+    <button onclick="document.getElementById('accounts').scrollIntoView({behavior:'smooth'})"
+      class="bg-primary hover:bg-emerald-600 transition px-10 py-4 rounded-full text-lg font-bold shadow-xl">
+      تبرع الآن
+    </button>
+  </div>
+</section>
+
+<!-- ACCOUNTS -->
+<section id="accounts" class="py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-extrabold text-center text-danger mb-12">
+      الحسابات البنكية
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Card -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 hover:-translate-y-2 transition">
+        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-primary">
+          <i class="fas fa-university"></i> حسابات الكريمي
+        </h3>
+
+        <div class="space-y-4">
+          <div class="flex justify-between items-center bg-gray-100 rounded-lg p-4">
+            <span>سعودي: 3164274941 🇸🇦</span>
+            <button class="copy-btn bg-primary text-white px-4 py-1 rounded"
+              data-copy="3164274941">
+              نسخ
+            </button>
+          </div>
+
+          <div class="flex justify-between items-center bg-gray-100 rounded-lg p-4">
+            <span>يمني: 3065943618 🇾🇪</span>
+            <button class="copy-btn bg-primary text-white px-4 py-1 rounded"
+              data-copy="3065943618">
+              نسخ
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 hover:-translate-y-2 transition">
+        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-primary">
+          <i class="fas fa-hand-holding-heart"></i> لماذا التبرع؟
+        </h3>
+
+        <ul class="space-y-4 text-lg">
+          <li>🤍 لا تحقرن من المعروف شيئًا</li>
+          <li>🤲 من دلّ على خير فله مثل أجر فاعله</li>
+          <li>🌱 تبرعك يصنع فرقًا حقيقيًا</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-white py-16">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <div class="inline-block bg-gradient-to-l from-black to-danger text-white px-16 py-10 rounded-3xl shadow-2xl">
+      <div class="text-5xl font-extrabold mb-2">7</div>
+      <div class="text-xl">حملات إغاثية منجزة</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white py-10 text-center">
+  <p class="font-bold text-lg">حملة أبناء عدن – ولو بشق تمرة</p>
+  <p class="opacity-70">يدًا بيد نصنع الأمل</p>
+</footer>
+
+<!-- WhatsApp Floating -->
+<a href="https://wa.me/967775417163?text=السلام%20عليكم%20حاب%20أستفسر%20عن%20حملة%20أبناء%20عدن"
+   target="_blank"
+   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl animate-bounce">
+   <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Toast -->
+<div id="toast"
+ class="fixed bottom-24 right-6 bg-primary text-white px-6 py-3 rounded-xl opacity-0 transition">
+تم النسخ بنجاح
+</div>
+
+<script>
+const toast = document.getElementById("toast");
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("copy-btn")) {
+    navigator.clipboard.writeText(e.target.dataset.copy);
+    toast.classList.remove("opacity-0");
+    setTimeout(()=>toast.classList.add("opacity-0"),2000);
+  }
+});
+</script>
+
+</body>
+</html><h2 class="section-title">الحسابات البنكية</h2>
 <div class="bank-cards">
 
 <!-- الكريمي الأول -->
@@ -341,4 +352,5 @@ window.onload = function() {
 </script>
 
 </body>
+
 </html>
